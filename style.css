@@ -1,0 +1,18 @@
+/*
+Theme Name: Thistle Child
+Theme URI: https://github.com/7studio/thistle-child
+Author: Xavier Zalawa
+Author URI: http://www.7studio.fr
+Description: WordPress Child Theme for lovely projects
+Template: thistle
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: thistle-child
+Domain Path: /languages
+*/
+
+/*
+ * This style is not enqueued, and not used for anything beyond it's WordPress header.
+ * See the `/assets/src/styles/` folder
+ */

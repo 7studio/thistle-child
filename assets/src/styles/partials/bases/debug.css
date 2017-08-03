@@ -1,0 +1,96 @@
+head,
+title,
+head meta,
+head link,
+head script {
+  display: block;
+  padding: .34375em 0;
+}
+head {
+  box-sizing: border-box;
+  margin: .6875em 10px;
+  border: 1px solid #d4dde4;
+  padding: .34375em 10px;
+  overflow: hidden;
+  color: #4d4e53;
+  font: 13px/1.375 monospace;
+  text-decoration: none;
+  background: #f8f9fa;
+  box-shadow: 0 1px 2px rgba(125, 112, 33, .23);
+  cursor: default;
+}
+head:first-child ~ * {
+  border-top: 1px solid #e6eaef;
+}
+
+/*
+ * 1. …
+ *//*
+head meta,
+head link {
+  display: none; /* 1 *//*
+}*/
+
+head::before {
+  content: "Notes : "
+           "\A * Titre : ≈55 caractères."
+           "\A * Description : ≈155 caractères."
+           "\A ---";
+  color: #888;
+  font-size: .75em;
+  white-space: pre-wrap;
+}
+
+title::before {
+  content: "<title>";
+}
+title::after {
+  content: "</title>";
+}
+
+head meta[name]::before {
+  content: "<meta name=\""attr(name)"\" content=\""attr(content)"\">";
+}
+head meta[property]::before {
+  content: "<meta property=\""attr(property)"\" content=\""attr(content)"\">";
+}
+head meta[content=""]::before {
+  color: #f00 !important;
+}
+head meta[name^="twitter:"]::before,
+head meta[property]::before {
+  display: inline-block;
+  padding-left: calc(1em + 5px);
+  background-position: 0 .171875em;
+  background-size: 1em auto;
+  background-repeat: no-repeat;
+}
+head meta[name^="twitter:"]::before {
+  color: #55acee;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAH7SURBVHja5Nbfa81xHMfxx2Z+pLTUFJNWJI2iFOVHUsqP+Q8MQ9nU3Ll0scKV3ZHakqz8uKBkWqHlYjeTTkmRsrQocoFdDJPCcfM+63ScX9+zc+zCq96d7/d7Pt/Ps8/n/fm+36+6dDrtX6veLKih49Z4NeY5hnZswByM4Q7OI3sr9+JlQ9zsxmpcqgD4AHtynm2O6MARNOM0lqA1Az2Eg3iHwQTAoTzAbLXiSVx/wWI0ZnK6In7vorNM4D7sL3PsJHoxgK4MdFHWgP6IhSUm6kywIwtwBltxMQN9nWfCMXQVOeFrEkDn4TpW4Wtmwmt5Bi5HH8ZxDlswN+v/iQTQ3zic+50O4WGBF1ri5I3iTYzrw7IE0DSapr9TzMcudOMqtqOuwMvNEUk1GTEN/YkrmMLnGhWh9/iRvb2/cBkrsanIKmeiF/lq74Ual9uRfNBPUTtrpcFCXeYmdmA48lstDeNDsdY2gdt4VUVoz1+tLee+LdpRtTSKx6WaeC/uVxF6oFzn0Bb5nalO4m0Su9KObTiFVAXA/mKGoL5EPh6F/UiiAZwoZcxyD9PScBIjeIaNCYBncbSkMYvG2o210bhbKljd80jFcLkWNIV7+Bb1NwnwKY5jfbnAzEq/40ZEUzjDnVgXjbwxmsAUPkZTTwWkkkOm7r9x+LMC/TMAN+Niz90ZNw4AAAAASUVORK5CYII=);
+}
+head meta[property]::before {
+  color: #3b5998;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAMAAABhTZc9AAAAVFBMVEU7V507V507V507V507V507V507V508WJ0+Wp9GYKNHYaNNZ6dfd7CXpsucqs6grdCuuti8xd7Y3uvc4u7f5O/m6vPs7/b29/r4+fv6+/38/P3///8xOJ4cAAAABnRSTlMAAXN78/T3qSKZAAAAaklEQVR42t3OOQ6AMAxEUcfgAGFfwub735OIiiIZCUp++zTSkOHcxsuZiG06JgEqZFFvtWqnXTcf18brXVTdqkB7RboEGFzq1Rm0Tn7WUAHVflB9dJRIZ7gdoXb41V9VgAplQDMyLAkVpgvexB8yF+Ap8gAAAABJRU5ErkJggg==);
+}
+
+head link::before {
+  content: "<link rel=\""attr(rel)"\" href=\""attr(href)"\">";
+}
+head link[media]::before {
+  content: "<link rel=\""attr(rel)"\" href=\""attr(href)"\" media=\""attr(media)"\">";
+}
+
+head script {
+  color: transparent;
+  font: 0/0 a;
+}
+head script::before {
+  content: "<script src=\""attr(src)"\" />…</script>";
+}
+head script[async]::before {
+  content: "<script src=\""attr(src)"\" async/>…</script>";
+}
+head script:not([async]):not([defer])::before {
+  color: red;
+}

@@ -1,0 +1,25 @@
+@import "fonts.css";
+
+@import "partials/bases/html.css";
+@import "partials/bases/base.css";
+@import "partials/bases/utils.css";
+@import "partials/bases/embed.css";
+
+@import "partials/editor.css";
+@import "partials/header.css";
+@import "partials/footer.css";
+@import "partials/pagination.css";
+
+
+html {
+  font-size: var(--base-fontsize);
+}
+body {
+  background-color: var(--base-bgcolor);
+  color: var(--base-color);
+  font: var(--base-font);
+}
+
+[fonts*=lato] body {
+  font-family: Lato;
+}

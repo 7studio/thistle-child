@@ -1,0 +1,350 @@
+/*
+ * @html
+ *
+ * Homogénéisation de l'apparence des éléments HTML
+ * ===
+ *
+ * …
+ *
+ * ## Ressources
+ *
+ * - http://www.w3.org/TR/CSS2/sample.html
+ * - http://www.w3.org/TR/html5/rendering.html
+ * - http://www.whatwg.org/specs/web-apps/current-work/multipage/rendering.html#the-css-user-agent-style-sheet-and-presentational-hints
+ * - http://mxr.mozilla.org/mozilla-release/source/layout/style/html.css
+ *   (ou resource://gre-resources/html.css)
+ * - http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
+ * - https://github.com/fvsch/scripts-and-snippets/blob/master/css/simple-base-stylesheet/full.css
+ * - https://github.com/necolas/normalize.css/blob/master/normalize.css
+ */
+
+
+
+/*
+ * 1. Supprime les marges extérieures appliquées par défaut.
+ */
+body {
+  margin: 0; /* 1 */
+  padding: 0;
+}
+
+main {
+  display: block;
+}
+
+/*
+ * 1. Uniformise le modèle de boîte CSS.
+ *    - Chrome, IE : `{ box-sizing: content-box; height: 0; }`.
+ *    - Fx : `{ box-sizing: border-box; height: 2px; }`.
+ * 2. Hérite de la valeur calculée de la propriété CSS color.
+ *    cf. : http://www.sitepoint.com/12-little-known-css-facts/#the-color-property-isnt-just-for-text
+ * 3.
+ */
+hr {
+  border-color: inherit; /* 2 */
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 3 */
+}
+
+/*
+ * 1. Contient les débordements en affichant les barres de défilement
+ *    si nécessaire.
+ * 2. Fixe la largeur d'une tabulation à 4 espaces.
+ */
+pre {
+  overflow: auto; /* 1 */
+  tab-size: 4; /* 2 */
+}
+
+/*
+ * 1. Uniformise la marge intérieure gauche.
+ *    - IE 8 : `{ padding-left: 30pt; }`.
+ */
+ol,
+ul {
+  padding-left: 40px; /* 1 */
+}
+
+/*
+ * 1. Retire les marges extérieures en haut et en bas de l'élément quand
+ *    celui-ci est imbriqué.
+ *    - Chrome, IE : `{ margin: 1em 0; }`.
+ *    - Fx : `{ margin: 0; }`.
+ */
+dl dl,
+ol dl,
+ul dl {
+  margin-bottom: 0; /* 1 */
+  margin-top: 0; /* 1 */
+}
+
+/*
+ * 1. Homogénéise les marges extérieures.
+ *    - IE 8 : `{ margin: auto auto auto 40px; }`.
+ */
+dd {
+  margin-bottom: 0; /* 1 */
+  margin-right: 0; /* 1 */
+  margin-top: 0; /* 1 */
+}
+
+/*
+ * 1. Souligne les liens même si un utilisateur de Fx en a décidé autrement.
+ * 2. Retire l'arrière-plan gris au moment exact où l'utilisateur clique sur le
+ *    lien dans IE 10.
+ */
+a {
+  background-color: transparent; /* 2 */
+  text-decoration: underline; /* 1 */
+}
+
+/*
+ * 1. Retire les contours dynamiques au moment exact où l'utilisateur clique
+ *    ou survole le lien.
+ *    Les contours dynamiques sont réservés quand le lien reçoit le focus.
+ */
+a:active,
+a:hover {
+  outline: none; /* 1 */
+}
+
+/*
+ * 1. Corrige le comportement incorrect de WebKit.
+ *    cf. :
+ *    - https://github.com/necolas/normalize.css/pull/342
+ *    - https://bugs.webkit.org/buglist.cgi?quicksearch=bolder
+ * 2. Représente l'importance d'une chaîne par rapport à son parent.
+ *    L'élément HTML `<strong>` peut être utilisé dans un `<h1>` ou
+ *    un autre `<strong>` pour distinguer un texte plus important.
+ *    cf. : http://www.w3.org/TR/html5/text-level-semantics.html#the-strong-element
+ */
+b,
+strong {
+  font-weight: inherit; /* 1 */
+}
+b,
+strong {
+  font-weight: bolder; /* 2 */
+}
+
+/*
+ * 1. Spécifie une taille de police homogène (`≈13px`) dans tous les navigateurs.
+ *    - Safari, Fx, Opera 12 : `81.25%`.
+ *    - IE : `82.875%`.
+ *    - Chrome: `83.33333134651187%`.
+ */
+small {
+  font-size: .82em; /* 1 */
+  font-size: calc(1em * .8125); /* 1 */
+}
+
+/*
+ * 1. Souligne les abbréviations pour Chrome, IE entre autres.
+ * 2. Indique qu'une aide est disponible.
+ */
+abbr[title] {
+  border-bottom: 1px dotted; /* 1 */
+  cursor: help; /* 2 */
+}
+/*
+ * Évite que les abbréviations soient souglinées deux fois dans les navigateurs
+ * qui appliquent la nouvelle spécification.
+ * cf. :
+ * - https://github.com/necolas/normalize.css/pull/451
+ * - https://www.fxsitecompat.com/en-US/docs/2015/default-style-of-abbr-acronym-has-been-changed/
+ */
+@supports (text-decoration: underline dotted) {
+
+  abbr[title] {
+    border-bottom: none;
+    text-decoration: underline dotted;
+  }
+
+}
+
+/*
+ * 1. Redéfinit la taille de police pour être similaire
+ *    à l'élément HTML `<small>`.
+ *    Seul IE n'applique pas ce comportement par défaut.
+ * 2. Empêche l'interligne inégal des lignes.
+ */
+sub,
+sup {
+  font-size: .82em; /* 1 */
+  font-size: calc(1em * .8125); /* 1 */
+  line-height: 0; /* 2 */
+}
+
+/*
+ * 1. Indique la manière dont le user-agent doit afficher
+ *    nos jolis guillemets francais.
+ */
+q {
+  quotes: "\00AB\202F" "\202F\00BB" "\201C" "\201D"; /* 1 */
+}
+
+/*
+ * 1. Applique des marges extérieures en haut et en bas comme un élément
+ *    appartenant à la catégorie de contenu de flux (ex. : `<p>`, `<ul>`, …)
+ * 2. Fusionne les bordures des cellules adjacentes dans le tableau.
+ */
+table {
+  border-collapse: collapse; /* 2 */
+  margin-bottom: 1em; /* 1 */
+  margin-top: 1em; /* 1 */
+}
+
+/*
+ * 1. Dessine une bordure autour des cellules du tableau afin de le visualiser.
+ * 2. Aligne le haut du `padding` des cellules avec le haut de la rangée.
+ */
+th,
+td {
+  border: 1px solid; /* 1 */
+  vertical-align: top; /* 2 */
+}
+
+/*
+ * 1. Enlève la bordure autour de l'élément HTML `<img>` quand celui-ci
+ *    est à l'intérieur d'un lien dans IE 8/9/10.
+ */
+a img {
+  border: 0; /* 1 */
+}
+
+/*
+ * 1. Uniformise la façon de rogner le contenu.
+ *    - IE : `{ overflow: visible; }`.
+ */
+svg:not(:root) {
+  overflow: hidden; /* 1 */
+}
+
+/*
+ * 1. Uniformise le style de la bordure.
+ *    - IE<=11 : `{ border: 1px solid; }`.
+ * 2. Hérite de la valeur calculée de la propriété CSS color.
+ *    cf. : http://www.sitepoint.com/12-little-known-css-facts/#the-color-property-isnt-just-for-text
+ * 3. Uniformise les marges intérieures.
+ *    - IE<=11 : `{ padding: 3px 3px 4px; }`.
+ *    cf. :
+ *    - https://connect.microsoft.com/IE/feedback/details/816709/
+ *    - https://github.com/guardian/guss-typography/blob/master/_typography.mixins.scss#L16-L18
+ */
+fieldset {
+  border: 2px groove; /* 1 */
+  border-color: inherit; /* 2 */
+  padding: .35em .625em .75em; /* 3 */
+  padding: .35em calc(1em * .625) .75em; /* 3 */
+}
+
+/*
+ * 1. Aide IE<=10 à ajouter automatiquement des ruptures de lignes.
+ * 2. Uniformise les marges intérieures.
+ * 3. Permet à IE<=11 d'hériter correctement de la valeur calculée de la propriété CSS color.
+ */
+legend {
+  box-sizing: border-box;
+  color: inherit; /* 3 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0 2px; /* 2 */
+  white-space: normal; /* 1 */
+}
+
+/*
+ * 1. Supprime les marges extérieures par défaut des éléments.
+ */
+button,
+input,
+select,
+textarea {
+  margin: 0; /* 1 */
+}
+
+/*
+ * 1. Homogénéise la propriété CSS `overflow`.
+ *    - IE<=11 : `{ overflow: hidden; }`.
+ * 2. Retire la possibilité de sélectionner le texte de l’élément
+ *    et des sous-éléments. Uniformise le comportement avec les éléments HTML
+ *    `<input type="[ submit | reset | button ]">` dans Chrome et IE.
+ */
+button {
+  overflow: visible; /* 1 */
+  user-select: none; /* 2 */
+}
+
+/*
+ * 1. Déshérite les éléments HTML `<button>` et `<select>` de la casse du texte
+ *    de leur parent.
+ *    Fonctionnement par défaut pour tous les autres éléments d'un formulaire.
+ *    - `<button>` : IE<=11, Fx, Opera.
+ *    - `<select>` : Fx.
+ */
+button,
+select {
+  text-transform: none; /* 1 */
+}
+
+/*
+ * 1. Cache la barre de défilement quand cela n'est pas nécessaire.
+ *    - IE<=11 : `{ overflow: scroll; }`.
+ */
+textarea {
+  overflow: auto; /* 1 */
+}
+
+/*
+ * 1. Retire la fine bordure pointillée autours de la zone de contenu du bouton
+ *    lorsque celui-ci reçoit le focus.
+ * 2. Retire les marges intérieures ajotuées par Firefox
+ *    pour des questions d'accessibilité.
+ *
+ * cf. : https://developer.mozilla.org/fr/docs/Web/HTML/Element/Button#Notes (dernier paragraphe)
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0 !important; /* 1 */
+  padding: 0 !important; /* 2 */
+}
+
+/*
+ * 1. Uniformise le modèle de boîte CSS.
+ *    - IE 8/9/10 : `{ box-sizing: content-box; }`.
+ * 2. Supprime les marges intérieures appliquées par défaut dans IE 8/9/10.
+ */
+[type=radio],
+[type=checkbox] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/*
+ * 1. Homogénéise l'apparence avec celle de l'élément HTML `<button>`.
+ *    - Chrome, Safari : `{ -webkit-appearance: push-button; }`.
+ */
+[type=reset],
+[type=submit],
+[type=button] {
+  appearance: button; /* 1 */
+}
+
+/*
+ * 1. Hérite de la couleur de texte de l'élément HTML
+ *    sur lequel le texte indicatif est applqiué.
+ *    - Chrome, Safari : `{ color: darkGray; }`.
+ * 2. Uniformise l'opacité du texte indicatif.
+ */
+::-webkit-input-placeholder {
+  color: inherit; /* 1 */
+  opacity: .54; /* 2 */
+}
+::-moz-placeholder {
+  color: inherit; /* 1 */
+  opacity: .54; /* 2 */
+}
+:-ms-input-placeholder {
+  color: inherit; /* 1 */
+  opacity: .54; /* 2 */
+}

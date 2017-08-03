@@ -1,0 +1,26 @@
+.Embed {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+.Embed-ratio {
+	display: block;
+	padding-bottom: 100%;
+	width: 100%;
+}
+.Embed-content iframe {
+	max-width: 100%;
+}
+
+.Embed[embed-aspectRatio] .Embed-content {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.Embed[embed-aspectRatio] .Embed-content iframe {
+	height: 100%;
+	width: 100%;
+}

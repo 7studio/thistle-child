@@ -1,0 +1,25 @@
+{
+	"media": {
+		"--viewport-XS": "(max-width: 629px)",
+		"--viewport-S": "(min-width: 630px) and (max-width: 944px)",
+		"--viewport-M": "(min-width: 945px) and (max-width: 1049px)",
+		"--viewport-L": "(min-width: 1050px) and (max-width: 1259px)",
+		"--viewport-XL": "(min-width: 1260px)"
+	},
+
+	"properties": {
+        "--base-maxwidth": "1240px",
+		"--base-color": "#444",
+    	"--base-bgcolor": "#fff",
+    	"--base-font": "1em/1.375 sans-serif",
+        "--base-fontsize": "16px",
+    	"--base-lineheight": "1.375em",
+
+		"--grid-column-gap": "20px",
+		"--grid-row-gap": "1.375rem",
+
+		"--color-grey": "#666",
+		"--color-darkgrey": "#444",
+		"--color-blue": "#0073aa"
+	}
+}

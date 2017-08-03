@@ -1,0 +1,85 @@
+.Pagination {
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  margin: 2.75em 0 0;
+}
+.Pagination::after,
+.Pagination .page-numbers {
+  background-color: #f5f5f5;
+  color: #555d66;
+  font-size: 1.309em;
+  font-weight: 700;
+  line-height: 2.1em;
+  margin: 0 calc(var(--grid-column-grap) / 4);
+  text-align: center;
+}
+.Pagination::after {
+  border-radius: 1.05em;
+  padding: 0 var(--grid-column-grap);
+}
+.Pagination .page-numbers {
+  border-radius: 50%;
+  min-width: 2.1em; /* 44px */
+}
+.Pagination .current {
+  background-color: #008ec2;
+  color: #fff;
+}
+.Pagination .prev,
+.Pagination .next {
+  position: relative;
+}
+.Pagination .prev svg,
+.Pagination .next svg {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.Pagination .prev {
+  margin-right: 35px;
+  transform: rotate(.5turn);
+}
+.Pagination .next {
+  margin-left: 35px;
+}
+
+.Pagination > *:last-child:not(.next) { margin-right: calc(35px + 2.1em); }
+.Pagination > *:first-child:not(.prev) { margin-left: calc(35px + 2.1em); }
+
+@media (--viewport-XS), (--viewport-S), (--viewport-M) {
+
+  .Pagination > * {
+    display: none;
+  }
+  .Pagination:not([data-count="0"])::after {
+    background-color: transparent;
+    content: attr(data-current) "\00a0/\00a0" attr(data-count);
+    order: 2;
+  }
+  .Pagination > *:first-child:not(.prev),
+  .Pagination > *:last-child:not(.next) {
+    display: block !important;
+    min-width: 0;
+    overflow: hidden;
+    width: 0;
+  }
+  .Pagination > *:last-child:not(.next) {
+    order: 3;
+  }
+
+  .Pagination .prev,
+  .Pagination .next {
+    display: block;
+  }
+  .Pagination .prev {
+    order: 1;
+  }
+  .Pagination .next {
+    order: 3;
+  }
+
+}

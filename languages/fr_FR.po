@@ -1,0 +1,56 @@
+# Copyright (C) 2017 Xavier Zalawa
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Thistle Child 0.1.0\n"
+"POT-Creation-Date: 2017-08-03 16:54+0100\n"
+"PO-Revision-Date: 2017-08-03 23:14+0100\n"
+"Last-Translator: Xavier Zalawa <xavier@7studio.fr>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_x;_ex;_n:1,2;_nx:1,2;_n_noop:1,2;_nx_noop:1,2;"
+"esc_html__;esc_html_e;esc_html_x;esc_attr__;esc_attr_e;esc_attr_x\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../header.php:12 ../404.php:10
+msgid "Skip to main nav"
+msgstr "Aller à la navigation principale"
+
+#: ../header.php:13
+msgid "Skip to main content"
+msgstr "Aller au contenu principal"
+
+#: ../header.php:14 ../404.php:11
+msgid "Skip to search form"
+msgstr "Aller au moteur de recherche"
+
+#: ../searchform.php:7
+msgid "Search by keywords on this site"
+msgstr "Rechercher par mots-clés sur le site"
+
+#: ../searchform.php:9
+msgid "Keywords to search"
+msgstr "Mots-clés à rechercher"
+
+#: ../searchform.php:13
+msgid "Enter your keywords…"
+msgstr "Saisissez vos mots-clés…"
+
+#: ../searchform.php:20
+msgid "Search"
+msgstr "Rechercher"
+
+#: ../functions.php:54
+msgid "Main naviagtion"
+msgstr "Navigation principale"
+
+#: ../functions.php:55
+msgid "Footer navigation"
+msgstr "Navigation de bas de page"
